@@ -15,7 +15,7 @@ class CustomAppBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         // ignore: prefer_const_literals_to_create_immutables
         children: [
-          Text("Hey User",
+          Text("Notsify",
               style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
           Container(
             width: 45,
