@@ -11,6 +11,9 @@ class AddScreen extends StatefulWidget {
 }
 
 class _AddScreenState extends State<AddScreen> {
+  TextEditingController titleController = TextEditingController();
+  TextEditingController descController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     // ignore: prefer_const_constructors
@@ -55,6 +58,7 @@ class _AddScreenState extends State<AddScreen> {
             children: [
               //title
               TextFormField(
+                controller: titleController,
                 style: TextStyle(fontWeight: FontWeight.bold),
                 decoration: InputDecoration(
                   hintText: "Enter Title",
@@ -69,6 +73,7 @@ class _AddScreenState extends State<AddScreen> {
               ),
               SizedBox(height: 1),
               TextFormField(
+                controller: descController,
                 keyboardType: TextInputType.multiline,
                 maxLines: null,
                 decoration: InputDecoration(

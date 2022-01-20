@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "826037568128",
+    "project_id": "notsify-cdfa0",
+    "storage_bucket": "notsify-cdfa0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:826037568128:android:e9491bb494ab3901041c65",
+        "android_client_info": {
+          "package_name": "com.example.note_taking_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "826037568128-ctknsjtc35lmbiaq9eulbeh80kk8ng7a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBgo1x-VNgADMzu7b82P6iT7Kz7R-pyyDM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "826037568128-ctknsjtc35lmbiaq9eulbeh80kk8ng7a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
