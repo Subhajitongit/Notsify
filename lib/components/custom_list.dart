@@ -1,6 +1,7 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:note_taking_app/models/model_item.dart';
-
 
 class ListData extends StatelessWidget {
   const ListData({
