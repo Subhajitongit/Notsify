@@ -5,9 +5,14 @@ import 'package:note_taking_app/components/custom_appbar.dart';
 import 'package:note_taking_app/components/custom_navbar.dart';
 import 'package:note_taking_app/components/custom_search_bar.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

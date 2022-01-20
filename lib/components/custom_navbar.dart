@@ -1,11 +1,19 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
 
-class CustomNavBar extends StatelessWidget {
+class CustomNavBar extends StatefulWidget {
   const CustomNavBar({
     Key? key,
   }) : super(key: key);
+
+  @override
+  State<CustomNavBar> createState() => _CustomNavBarState();
+}
+
+class _CustomNavBarState extends State<CustomNavBar> {
+  int currentIndex = 0;
+  String title = "";
 
   @override
   Widget build(BuildContext context) {
@@ -13,35 +21,33 @@ class CustomNavBar extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 8),
       child: Row(
         children: [
-          NavButton(isActive: true, title: "Notes", press: () {}),
-          NavButton(title: "To Do", press: () {}),
-          NavButton(title: "Meetings", press: () {}),
+          NavButton("Notes", 0),
+          NavButton("To Do", 1),
+          NavButton("Meetings", 2),
         ],
       ),
     );
   }
-}
 
-class NavButton extends StatelessWidget {
-  NavButton({
-    Key? key,
-    this.isActive = false,
-    required this.title,
-    required this.press,
-  }) : super(key: key);
+  //function to point if the button is active
+  void changeIndex(int index) {
+    setState(() {
+      currentIndex = index;
+    });
+  }
 
-  final String title;
-  final VoidCallback press;
-  bool isActive;
-
-  @override
-  Widget build(BuildContext context) {
+  //creating a custom widget NavButton
+  Widget NavButton(String title, int index) {
     return TextButton(
-        onPressed: press,
+        onPressed: () {
+          changeIndex(index);
+        },
         child: Text(title,
             style: TextStyle(
-              fontWeight:
-                  isActive == true ? FontWeight.bold : FontWeight.normal,
-            )));
+                fontWeight:
+                    currentIndex == index ? FontWeight.bold : FontWeight.normal,
+                color: currentIndex == index
+                    ? Colors.blue[400]
+                    : Colors.black54)));
   }
 }
