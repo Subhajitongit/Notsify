@@ -2,6 +2,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:note_taking_app/Screens/edit_screen.dart';
 import 'dart:math';
 import 'package:note_taking_app/models/model_item.dart';
 import 'package:random_color/random_color.dart';
@@ -31,28 +32,39 @@ class ListData extends StatelessWidget {
                     crossAxisCount: 2,
                     crossAxisSpacing: 10.0,
                     mainAxisSpacing: 10.0),
-                itemBuilder: (context, index) => Container(
-                  padding: EdgeInsets.all(8.0),
-                  decoration: BoxDecoration(
-                    color: randoomColor.randomColor(colorHue: ColorHue.blue),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Column(
-                    children: [
-                      Text(snapshot.data?.documents[index].data['title'],
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                          )),
-                      SizedBox(height: 4),
-                      Text(snapshot.data?.documents[index].data['description'],
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontWeight: FontWeight.normal,
-                            color: Colors.white,
-                          )),
-                    ],
+                itemBuilder: (context, index) => InkWell(
+                  splashColor: Colors.black,
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => EditScreen(
+                                doctoedit: snapshot.data!.documents[index])));
+                  },
+                  child: Container(
+                    padding: EdgeInsets.all(8.0),
+                    decoration: BoxDecoration(
+                      color: randoomColor.randomColor(colorHue: ColorHue.blue),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Column(
+                      children: [
+                        Text(snapshot.data?.documents[index].data['title'],
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            )),
+                        SizedBox(height: 4),
+                        Text(
+                            snapshot.data?.documents[index].data['description'],
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontWeight: FontWeight.normal,
+                              color: Colors.white,
+                            )),
+                      ],
+                    ),
                   ),
                 ),
               );

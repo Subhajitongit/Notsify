@@ -1,25 +1,35 @@
-// ignore_for_file: prefer_const_constructors, duplicate_ignore, import_of_legacy_library_into_null_safe
+// ignore_for_file: prefer_const_constructors
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import "package:velocity_x/velocity_x.dart";
+import 'package:velocity_x/velocity_x.dart';
 
-class AddScreen extends StatefulWidget {
-  const AddScreen({Key? key}) : super(key: key);
+class EditScreen extends StatefulWidget {
+  DocumentSnapshot doctoedit;
+
+  EditScreen({Key? key, required this.doctoedit}) : super(key: key);
 
   @override
-  _AddScreenState createState() => _AddScreenState();
+  _EditScreenState createState() => _EditScreenState();
 }
 
-class _AddScreenState extends State<AddScreen> {
+class _EditScreenState extends State<EditScreen> {
   TextEditingController titleController = TextEditingController();
   TextEditingController descController = TextEditingController();
 
-  CollectionReference ref = Firestore.instance.collection('notes');
+  @override
+  void initState() {
+    // TODO: implement initState
+
+    titleController =
+        TextEditingController(text: widget.doctoedit.data['title']);
+    descController =
+        TextEditingController(text: widget.doctoedit.data['description']);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    // ignore: prefer_const_constructors
     return SafeArea(
       child: Scaffold(
         floatingActionButton: Container(
@@ -31,10 +41,10 @@ class _AddScreenState extends State<AddScreen> {
             padding: const EdgeInsets.all(8.0),
             child: IconButton(
               onPressed: () {
-                ref.add({
-                  'title': titleController.text,
-                  'description': descController.text
-                }).whenComplete(() => Navigator.pop(context));
+                // ref.add({
+                //   'title': titleController.text,
+                //   'description': descController.text
+                // }).whenComplete(() => Navigator.pop(context));
               },
               icon: Icon(Icons.check, color: Colors.white),
             ),
@@ -52,6 +62,8 @@ class _AddScreenState extends State<AddScreen> {
                   VxToast.show(context, msg: "Feature Coming Soon!");
                 },
                 icon: Icon(Icons.push_pin_outlined)),
+            IconButton(
+                onPressed: () {}, icon: Icon(Icons.delete, color: Colors.red)),
           ],
         ),
         body: SafeArea(
