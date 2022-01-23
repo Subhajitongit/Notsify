@@ -1,5 +1,6 @@
-// ignore_for_file: prefer_const_constructors, duplicate_ignore
+// ignore_for_file: prefer_const_constructors, duplicate_ignore, import_of_legacy_library_into_null_safe
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import "package:velocity_x/velocity_x.dart";
 
@@ -13,6 +14,8 @@ class AddScreen extends StatefulWidget {
 class _AddScreenState extends State<AddScreen> {
   TextEditingController titleController = TextEditingController();
   TextEditingController descController = TextEditingController();
+
+  CollectionReference ref = Firestore.instance.collection('notes');
 
   @override
   Widget build(BuildContext context) {
@@ -28,9 +31,10 @@ class _AddScreenState extends State<AddScreen> {
             padding: const EdgeInsets.all(8.0),
             child: IconButton(
               onPressed: () {
-                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                  content: Text("Saving Note.."),
-                ));
+                ref.add({
+                  'title': titleController.text,
+                  'description': descController.text
+                }).whenComplete(() => Navigator.pop(context));
               },
               icon: Icon(Icons.check, color: Colors.white),
             ),
