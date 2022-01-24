@@ -59,6 +59,7 @@ class ListData extends StatelessWidget {
                         Text(
                             snapshot.data?.documents[index].data['description'],
                             textAlign: TextAlign.center,
+                            maxLines: 5,
                             style: TextStyle(
                               fontWeight: FontWeight.normal,
                               color: Colors.white,

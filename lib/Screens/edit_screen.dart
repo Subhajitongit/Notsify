@@ -41,6 +41,11 @@ class _EditScreenState extends State<EditScreen> {
             padding: const EdgeInsets.all(8.0),
             child: IconButton(
               onPressed: () {
+                widget.doctoedit.reference.updateData({
+                  'title': titleController.text,
+                  'description': descController.text
+                }).whenComplete(() => Navigator.pop(context));
+
                 // ref.add({
                 //   'title': titleController.text,
                 //   'description': descController.text
@@ -63,7 +68,12 @@ class _EditScreenState extends State<EditScreen> {
                 },
                 icon: Icon(Icons.push_pin_outlined)),
             IconButton(
-                onPressed: () {}, icon: Icon(Icons.delete, color: Colors.red)),
+                onPressed: () {
+                  widget.doctoedit.reference
+                      .delete()
+                      .whenComplete(() => Navigator.pop(context));
+                },
+                icon: Icon(Icons.delete, color: Colors.red)),
           ],
         ),
         body: SafeArea(
