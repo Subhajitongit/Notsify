@@ -4,18 +4,17 @@ import 'package:flutter/material.dart';
 
 import 'package:note_taking_app/components/custom_appbar.dart';
 import 'package:note_taking_app/components/custom_bottomBar.dart';
-import 'package:note_taking_app/components/custom_list.dart';
 import 'package:note_taking_app/components/custom_navbar.dart';
 import 'package:note_taking_app/components/custom_search_bar.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class TodoScreen extends StatefulWidget {
+  const TodoScreen({Key? key}) : super(key: key);
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<TodoScreen> createState() => _TodoScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _TodoScreenState extends State<TodoScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,13 +28,8 @@ class _HomeScreenState extends State<HomeScreen> {
             CustomAppBar(),
             //search bar section
             CustomSearchBar(),
-            SizedBox(height: 10),
             //navBar section
             CustomNavBar(),
-            SizedBox(height: 10),
-
-            //models section
-            // ListData()
           ],
         ),
       ),
